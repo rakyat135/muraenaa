@@ -37,11 +37,11 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching:false 
       run:
-          name: build Docker image
-          command:|
-            docker build -t mumu -t rakyat/mumuapp:latest
-            echo $dockerpass | docker login -u rakyat135 --password-stdin
-            docker push rakyat/mumuapp:latest
+        name: build Docker image
+        command:|
+          docker build -t mumu -t rakyat/mumuapp:latest
+          echo $dockerpass | docker login -u rakyat135 --password-stdin
+          docker push rakyat/mumuapp:latest
 workflows:
   version: 2
   workflow:
