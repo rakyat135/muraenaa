@@ -48,5 +48,6 @@ workflows:
   workflow:
     jobs:
       - build
+      -build_docker_image
 
 
