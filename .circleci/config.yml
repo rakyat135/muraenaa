@@ -31,7 +31,7 @@ jobs:
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n "v$VERSION" -body "$(cat RELEASE.md)" -draft -replace -delete "v$VERSION" dist/
   build_docker_image:
     docker:
-      - image: golang:alpine
+      - image: cimg/go:1.21
     steps:
       - checkout 
       - setup_remote_docker:
