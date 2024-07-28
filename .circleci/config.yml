@@ -38,7 +38,7 @@ jobs:
           docker_layer_caching:false 
       - run:
         name: build Docker image
-        command:|
+        command: |
           docker build -t mumu -t rakyat/mumuapp:latest
           echo $dockerpass | docker login -u rakyat135 --password-stdin
           docker push rakyat/mumuapp:latest
