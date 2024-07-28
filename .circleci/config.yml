@@ -29,13 +29,6 @@ jobs:
             bash ./.circleci/auto-release.sh ./dist/*
             cat RELEASE.md
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n "v$VERSION" -body "$(cat RELEASE.md)" -draft -replace -delete "v$VERSION" dist/
-  build_docker_image:
-    docker:
-      - image: cimg/go:1.21
-    steps:
-      - checkout 
-      - setup_remote_docker:
-          docker_layer_caching:false 
       - run:
           name: Build Docker image
           command: |
@@ -43,11 +36,12 @@ jobs:
             echo $dockerpass | docker login -u rakyat135 --password-stdin
             docker push rakyat/mumu:latest
 
+
 workflows:
   version: 2
   workflow:
     jobs:
       - build
-      - build_docker_image
+
 
 
